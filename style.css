@@ -51,7 +51,6 @@ h3 {
   padding: 1.5rem 5rem 1.4rem 4rem;
 }
 
-/* logo */
 .mainNav .logo {
   display: flex;
   align-items: center;
@@ -65,7 +64,6 @@ h3 {
   background-color: transparent !important;
 }
 
-/* navigation */
 .mainNav nav {
   display: flex;
   gap: 4rem;
@@ -164,7 +162,6 @@ h3 {
   margin-bottom: 0.6rem;
 }
 
-/* SALE */
 .productlist article.onSale .discounted {
   display: flex;
   justify-content: space-between;
@@ -183,7 +180,6 @@ h3 {
   color: red;
 }
 
-/* SOLD OUT */
 .productlist article.soldOut::before {
   content: "SOLD OUT";
   position: absolute;
