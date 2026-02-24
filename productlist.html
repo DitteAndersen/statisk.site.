@@ -3,7 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Products By Category</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+
+  <body class="productlist">
+    <header class="mainNav">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="FashionRUs logo" />
+      </a>
+
+      <nav>
+        <a href="#">CATEGORIES</a>
+        <a href="#">BRANDS</a>
+        <a href="#">SEASONS</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>APPAREL</h2>
+
+      <!-- PRODUCT 1 -->
+      <a href="product.html">
+        <article class="smallProduct">
+          <img
+            src="https://kea-alt-del.dk/t7/images/webp/640/1532.webp"
+            alt="product image"
+          />
+          <h3>Grey Leaping Cat T-shirt</h3>
+          <p class="subtitle">Tshirts | Nike</p>
+          <p class="price">DKK <span>899</span>,-</p>
+
+          <div class="discounted">
+            <p>Now DKK <span></span>, -</p>
+            <p><span></span>%</p>
+          </div>
+        </article>
+      </a>
+
+      <!-- PRODUCT 2 (ON SALE) -->
+      <a href="product.html">
+        <article class="smallProduct onSale">
+          <img
+            src="https://kea-alt-del.dk/t7/images/webp/640/1164.webp"
+            alt="product image"
+          />
+          <h3>Sahara Team India Fanwear Round Neck Jersey</h3>
+          <p class="subtitle">Tshirts | Nike</p>
+          <p class="price">DKK <span>895</span>,-</p>
+
+          <div class="discounted">
+            <p>Now DKK <span>795</span>, -</p>
+            <p><span>10</span>%</p>
+          </div>
+        </article>
+      </a>
+
+      <!-- PRODUCT 3 (SOLD OUT) -->
+      <a href="product.html">
+        <article class="smallProduct soldOut">
+          <img
+            src="https://kea-alt-del.dk/t7/images/webp/640/1165.webp"
+            alt="product image"
+          />
+          <h3>Sahara Team India Fanwear Round Neck Jersey</h3>
+          <p class="subtitle">Tshirts | Nike</p>
+          <p class="price">DKK <span>895</span>,-</p>
+
+          <div class="discounted">
+            <p>Now DKK <span></span>, -</p>
+            <p><span></span>%</p>
+          </div>
+        </article>
+      </a>
+
+      <!-- PRODUCT 4 (ON SALE + SOLD OUT) -->
+      <a href="product.html">
+        <article class="smallProduct onSale soldOut">
+          <img
+            src="https://kea-alt-del.dk/t7/images/webp/640/1525.webp"
+            alt="product image"
+          />
+          <h3>Blue T20 Indian Cricket Jersey</h3>
+          <p class="subtitle">Tshirts | Nike</p>
+          <p class="price">DKK <span>1299</span>,-</p>
+
+          <div class="discounted">
+            <p>Now DKK <span>974</span>, -</p>
+            <p><span>25</span>%</p>
+          </div>
+        </article>
+      </a>
+    </main>
+  </body>
 </html>

@@ -3,7 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+
+  <body class="product">
+    <header class="mainNav">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="FashionRUs logo" />
+      </a>
+
+      <nav>
+        <a href="#">CATEGORIES</a>
+        <a href="#">BRANDS</a>
+        <a href="#">SEASONS</a>
+      </nav>
+    </header>
+
+    <a href="productlist.html">BACK</a>
+
+    <main id="productContainer">
+      <figure>
+        <img
+          src="https://kea-alt-del.dk/t7/images/webp/640/1535.webp"
+          alt="Produktbillede"
+          class="productImage"
+        />
+        <span class="saleLabel"></span>
+      </figure>
+
+      <section class="productDetails">
+        <h2 class="productName">Unisex Logo Cap</h2>
+
+        <div>
+          <p class="articleType">
+            <span class="bold">Type:</span>
+            Caps
+          </p>
+
+          <p class="productCategory">
+            <span class="bold">Kategori:</span>
+            Accessories
+          </p>
+
+          <p class="productPrice">
+            <span class="bold">Pris:</span>
+            699,-
+          </p>
+
+          <p class="stock">
+            <span class="bold">Stock:</span>
+            5
+          </p>
+        </div>
+
+        <button class="buyButton">Køb nu</button>
+      </section>
+    </main>
+  </body>
 </html>
