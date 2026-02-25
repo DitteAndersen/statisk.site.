@@ -262,11 +262,7 @@ figure {
   color: black;
 }
 
-/* =========================================================
-   MOBILE (add at the bottom of style.css)
-   ========================================================= */
 @media (max-width: 768px) {
-  /* ---------- Header ---------- */
   .mainNav {
     padding: 1.1rem 1.2rem;
   }
@@ -275,12 +271,10 @@ figure {
     height: 44px;
   }
 
-  /* Hide desktop nav links on mobile */
   .mainNav nav {
     display: none;
   }
 
-  /* Fake hamburger (visual) */
   .mainNav::after {
     content: "";
     width: 26px;
@@ -293,16 +287,14 @@ figure {
       linear-gradient(#111, #111) 0 100% / 100% 2px no-repeat;
   }
 
-  /* ---------- Global headings spacing ---------- */
   h2 {
     margin-top: 2.2rem;
     margin-bottom: 1.8rem;
     text-align: center;
   }
 
-  /* ---------- Categories page ---------- */
   .category main h2 {
-    margin: 2.2rem 0 2rem 0; /* override desktop left-margin */
+    margin: 2.2rem 0 2rem 0;
     text-align: center;
   }
 
@@ -319,7 +311,6 @@ figure {
     border-radius: 6px;
   }
 
-  /* ---------- Product list page ---------- */
   .productlist main {
     grid-template-columns: 1fr;
     gap: 1.6rem;
@@ -341,8 +332,6 @@ figure {
     height: auto;
     display: block;
   }
-
-  /* Make SOLD OUT label behave (it was absolute, but article wasn't positioned) */
   .productlist article.soldOut {
     position: relative;
   }
@@ -354,7 +343,6 @@ figure {
     letter-spacing: 0.5px;
   }
 
-  /* ---------- Product page ---------- */
   .backLink {
     margin: 1.2rem 1.6rem 0 1.6rem;
   }
@@ -383,48 +371,5 @@ figure {
     text-align: center;
     padding: 14px 16px;
     border-radius: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .mainNav nav {
-    display: none;
-  }
-
-  .category main h2 {
-    margin: 2.2rem 0 2rem 0;
-    text-align: center;
-  }
-
-  .categoryList {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-    margin: 0 1.6rem 3rem 1.6rem;
-  }
-
-  .productlist main {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-    margin: 0 1.6rem 3rem 1.6rem;
-  }
-
-  .productlist main > h2 {
-    margin: 2.2rem 0 1.2rem 0;
-    text-align: center;
-    grid-column: 1 / -1;
-  }
-
-  .productlist article.soldOut {
-    position: relative;
-  }
-
-  #productContainer {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-    margin: 0 1.6rem 3rem 1.6rem;
-  }
-
-  .backLink {
-    margin: 1.2rem 1.6rem 0 1.6rem;
   }
 }
