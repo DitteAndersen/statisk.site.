@@ -14,7 +14,7 @@ function showData(data) {
   data.forEach((kategori) => {
     container.innerHTML += `
       <a href="productlist.html?category=${kategori.category}">
-        ${kategori.category}
+        ${kategori.category.toUpperCase()}
       </a>`;
   });
 }
