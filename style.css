@@ -40,7 +40,7 @@ h3 {
 }
 
 /* =========================================================
-   HEADER 
+   HEADER
    ========================================================= */
 
 .mainNav {
@@ -117,21 +117,21 @@ h3 {
 /* =========================================================
    PRODUCTLIST
    ========================================================= */
+
+/* main er kun spacing nu */
 .productlist main {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
   margin: 1em 5em 5em 5em;
 }
 
 .productlist main > h2 {
   margin-left: 1rem;
   margin-top: 2rem;
-  grid-column: 1 / -1;
 }
 
-.productlist h2 {
-  grid-column: 1 / -1;
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
 .productlist a {
@@ -144,7 +144,6 @@ h3 {
   text-align: left;
 }
 
-/* Card */
 .smallProduct {
   border-radius: 5px;
   padding: 1rem;
@@ -171,7 +170,7 @@ h3 {
   display: none;
 }
 
-.discounted p:last-child span {
+.discounted p:last-child {
   color: red;
 }
 
@@ -189,11 +188,11 @@ h3 {
 }
 
 .productlist article.soldOut img {
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 /* =========================================================
-   PRODUCT 
+   PRODUCT
    ========================================================= */
 
 .backLink {
@@ -311,16 +310,20 @@ figure {
     border-radius: 6px;
   }
 
+  /* main er stadig spacing på mobil */
   .productlist main {
+    margin: 0 1.6rem 3rem 1.6rem;
+  }
+
+  /* grid ændres her */
+  .productList {
     grid-template-columns: 1fr;
     gap: 1.6rem;
-    margin: 0 1.6rem 3rem 1.6rem;
   }
 
   .productlist main > h2 {
     margin: 2.2rem 0 1.2rem 0;
     text-align: center;
-    grid-column: 1 / -1;
   }
 
   .smallProduct {
@@ -332,6 +335,7 @@ figure {
     height: auto;
     display: block;
   }
+
   .productlist article.soldOut {
     position: relative;
   }
