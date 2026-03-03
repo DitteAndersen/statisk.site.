@@ -13,6 +13,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+    <script src="product.js" defer></script>
   </head>
 
   <body class="product">
@@ -27,13 +28,14 @@
         <a href="#">SEASONS</a>
       </nav>
     </header>
+
     <a href="productlist.html" class="backLink" id="backLink">BACK</a>
 
     <main id="productContainer">
       <figure>
         <img
-          src="https://storage.googleapis.com/kagglesdsdata/datasets/139630/329006/fashion-dataset/images/10222.jpg"
-          alt="Produktbillede"
+          src=""
+          alt=""
           class="productImage"
           loading="lazy"
           decoding="async"
@@ -44,42 +46,17 @@
       </figure>
 
       <section class="productDetails">
-        <h2 class="productName">Urban Leather Shoulder Bag</h2>
+        <h2 class="productName"></h2>
 
         <div>
-          <p class="articleType">
-            <span class="bold">Type:</span>
-            Bag
-          </p>
-
-          <p class="productCategory">
-            <span class="bold">Kategori:</span>
-            Accessories
-          </p>
-
-          <p class="productPrice">
-            <span class="bold">Pris:</span>
-            899,-
-          </p>
-
-          <p class="stock">
-            <span class="bold">Stock:</span>
-            5
-          </p>
+          <p class="articleType"></p>
+          <p class="productCategory"></p>
+          <p class="productPrice"></p>
+          <p class="stock"></p>
         </div>
 
-        <button class="buyButton">Køb nu</button>
+        <button class="buyButton">KØB NU</button>
       </section>
     </main>
-
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const category = params.get("category");
-      const backLink = document.getElementById("backLink");
-
-      if (category) {
-        backLink.href = `productlist.html?category=${encodeURIComponent(category)}`;
-      }
-    </script>
   </body>
 </html>
