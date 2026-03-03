@@ -118,14 +118,12 @@ h3 {
    PRODUCTLIST
    ========================================================= */
 
-/* main er kun spacing nu */
 .productlist main {
   margin: 1em 5em 5em 5em;
 }
 
 .productlist main > h2 {
   margin-left: 1rem;
-  margin-top: 2rem;
 }
 
 .productList {
@@ -174,9 +172,33 @@ h3 {
   color: red;
 }
 
+.productlist .filters {
+  display: flex;
+  gap: 0.8rem;
+  margin: 0 0 2.5rem 1rem;
+}
+
+.productlist .filterBtn {
+  border: 1px solid rgb(108, 108, 108);
+  background: transparent;
+  color: black;
+  padding: 0.5rem 2.4rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.productlist .filterBtn.isActive {
+  background: rgb(46, 46, 46);
+  color: white;
+  border-color: black;
+}
 .productlist article.onSale .price span {
-  text-decoration: line-through;
   color: red;
+  text-decoration: line-through;
 }
 
 .productlist article.soldOut::before {
@@ -212,6 +234,19 @@ h3 {
 
 figure {
   margin: 0;
+  position: relative;
+}
+.saleLabel {
+  position: absolute;
+  top: 2.4em;
+  right: 0.3em;
+
+  background-color: white;
+  color: red;
+  padding: 1rem;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
 }
 
 .productImage {
@@ -240,6 +275,12 @@ figure {
 
 .productName {
   font-size: 2rem;
+}
+.productPrice s {
+  color: red;
+}
+.salePrice {
+  font-weight: 500;
 }
 
 .buyButton {
@@ -310,12 +351,10 @@ figure {
     border-radius: 6px;
   }
 
-  /* main er stadig spacing på mobil */
   .productlist main {
     margin: 0 1.6rem 3rem 1.6rem;
   }
 
-  /* grid ændres her */
   .productList {
     grid-template-columns: 1fr;
     gap: 1.6rem;
@@ -360,6 +399,12 @@ figure {
   .productImage {
     width: 100%;
     margin: 1.2rem auto 0 auto;
+  }
+
+  .saleLabel {
+    top: 1.2rem;
+    right: 0rem;
+    transform: translateX(0rem);
   }
 
   .productDetails {

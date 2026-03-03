@@ -1,19 +1,69 @@
-const category = new URLSearchParams(window.location.search).get("category");
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${category}`;
+const params = new URLSearchParams(window.location.search);
+const category = params.get("category");
 
-document.querySelector("h2").textContent = category.toUpperCase();
+document.querySelector("h2").textContent = category
+  ? category.toUpperCase()
+  : "PRODUCTS";
 
 const container = document.querySelector(".productList");
 
-function getData() {
-  fetch(endpoint)
-    .then((response) => response.json())
-    .then(showProducts);
+let allProducts = [];
+
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${encodeURIComponent(
+  category,
+)}&limit=60`;
+
+fetch(endpoint)
+  .then((response) => response.json())
+  .then((products) => {
+    allProducts = products;
+    showProducts(allProducts);
+    setupFilters();
+  });
+
+function setupFilters() {
+  document.querySelectorAll(".filterBtn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".filterBtn")
+        .forEach((b) => b.classList.remove("isActive"));
+      btn.classList.add("isActive");
+
+      const chosen = btn.dataset.gender;
+
+      if (chosen === "all") {
+        showProducts(allProducts);
+        return;
+      }
+
+      const filtered = allProducts.filter(
+        (p) => normalizeGender(getGenderValue(p)) === chosen,
+      );
+      showProducts(filtered);
+    });
+  });
+}
+
+function getGenderValue(product) {
+  return (
+    product.gender ||
+    product.gendername ||
+    product.genderdisplayname ||
+    product.genderName ||
+    product.genderDisplayName ||
+    ""
+  );
+}
+
+function normalizeGender(value) {
+  const v = String(value).trim().toLowerCase();
+  if (v.includes("women")) return "women";
+  if (v.includes("men")) return "men";
+  if (v.includes("unisex")) return "unisex";
+  return v;
 }
 
 function showProducts(products) {
-  console.table(products);
-
   let markup = "";
 
   products.forEach((product) => {
@@ -22,9 +72,10 @@ function showProducts(products) {
 
     const saleClass = isOnSale ? "onSale" : "";
     const soldOutClass = isSoldOut ? "soldOut" : "";
+
     const newPrice = isOnSale
       ? Math.round(product.price - (product.price * product.discount) / 100)
-      : "";
+      : null;
 
     markup += `
       <a href="product.html?id=${product.id}&category=${encodeURIComponent(category)}">
@@ -41,12 +92,16 @@ function showProducts(products) {
           <h3>${product.productdisplayname}</h3>
           <p class="subtitle">${product.articletype} | ${product.brandname}</p>
 
-          <p class="price">DKK <span>${product.price}</span>,-</p>
+         <p class="price">DKK <span>${product.price},-</span></p>
 
-          <div class="discounted">
-            <p>Now DKK <span>${newPrice}</span>, -</p>
-            <p><span>${product.discount || ""}</span>%</p>
-          </div>
+          ${
+            isOnSale
+              ? `<div class="discounted">
+                  <p>Now DKK <span>${newPrice}</span>,-</p>
+                  <p><span>${product.discount}</span>%</p>
+                </div>`
+              : ``
+          }
         </article>
       </a>
     `;
@@ -54,5 +109,3 @@ function showProducts(products) {
 
   container.innerHTML = markup;
 }
-
-getData();
