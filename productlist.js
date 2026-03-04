@@ -1,25 +1,34 @@
+console.log("loaded");
+
 const params = new URLSearchParams(window.location.search);
 const category = params.get("category");
+
+console.log("category:", category);
 
 document.querySelector("h2").textContent = category
   ? category.toUpperCase()
   : "PRODUCTS";
 
 const container = document.querySelector(".productList");
-
 let allProducts = [];
 
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${encodeURIComponent(
-  category,
-)}&limit=60`;
+const endpoint = category
+  ? `https://kea-alt-del.dk/t7/api/products?category=${encodeURIComponent(category)}&limit=60`
+  : `https://kea-alt-del.dk/t7/api/products?limit=60`;
+
+console.log("endpoint:", endpoint);
 
 fetch(endpoint)
   .then((response) => response.json())
   .then((products) => {
+    console.log("products:", products);
+    console.log("products length:", products.length);
+
     allProducts = products;
     showProducts(allProducts);
     setupFilters();
-  });
+  })
+  .catch((err) => console.error("Fetch error:", err));
 
 function setupFilters() {
   document.querySelectorAll(".filterBtn").forEach((btn) => {
@@ -78,7 +87,7 @@ function showProducts(products) {
       : null;
 
     markup += `
-      <a href="product.html?id=${product.id}&category=${encodeURIComponent(category)}">
+      <a href="product.html?id=${product.id}&category=${encodeURIComponent(category ?? "")}">
         <article class="smallProduct ${saleClass} ${soldOutClass}">
           <img
             src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp"
@@ -92,7 +101,7 @@ function showProducts(products) {
           <h3>${product.productdisplayname}</h3>
           <p class="subtitle">${product.articletype} | ${product.brandname}</p>
 
-         <p class="price">DKK <span>${product.price},-</span></p>
+          <p class="price">DKK <span>${product.price},-</span></p>
 
           ${
             isOnSale

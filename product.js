@@ -1,5 +1,6 @@
-const productId = new URLSearchParams(window.location.search).get("id");
-const category = new URLSearchParams(window.location.search).get("category");
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
+const category = params.get("category");
 
 const productContainer = document.querySelector("#productContainer");
 const backLink = document.getElementById("backLink");
@@ -8,22 +9,22 @@ if (category && backLink) {
   backLink.href = `productlist.html?category=${encodeURIComponent(category)}`;
 }
 
-const endpoint = `https://kea-alt-del.dk/t7/api/products/${productId}`;
+if (productId) {
+  const endpoint = `https://kea-alt-del.dk/t7/api/products/${productId}`;
 
-function getData() {
   fetch(endpoint)
     .then((response) => response.json())
-    .then(renderProduct);
+    .then((data) => {
+      console.log(data);
+      renderProduct(data);
+    })
+    .catch((err) => console.log(err));
 }
 
 function renderProduct(data) {
   document.title = data.productdisplayname;
 
   const isOnSale = data.discount && data.discount > 0;
-  const newPrice = isOnSale
-    ? Math.round(data.price - (data.price * data.discount) / 100)
-    : null;
-
   const isSoldOut = data.soldout == 1;
 
   productContainer.innerHTML = `
@@ -44,25 +45,35 @@ function renderProduct(data) {
       <h2 class="productName">${data.productdisplayname}</h2>
 
       <div>
-        <p class="articleType"><span class="bold">Type:</span> ${data.articletype}</p>
-        <p class="productCategory"><span class="bold">Kategori:</span> ${data.category}</p>
+        <p class="articleType">
+          <span class="bold">Type:</span> ${data.articletype}
+        </p>
+
+        <p class="productCategory">
+          <span class="bold">Category:</span> ${data.category}
+        </p>
 
         <p class="productPrice">
           ${
             isOnSale
-              ? `<span class="bold">Pris:</span> DKK <s>${data.price},-</s> → <span class="salePrice">${newPrice},-</span>`
-              : `<span class="bold">Pris:</span> DKK ${data.price},-`
+              ? `<span class="bold">Price:</span> DKK 
+                 <s>${data.price},-</s>&nbsp;&nbsp;&nbsp;Now:
+                 <span class="salePrice">
+                   ${Math.round(data.price - (data.price * data.discount) / 100)},-
+                 </span>`
+              : `<span class="bold">Price:</span> DKK ${data.price},-`
           }
         </p>
 
-       <p class="stock"><span class="bold">Sold out:</span> ${data.soldout}</p>
+        <p class="stock">
+          <span class="bold">Availability:</span> 
+          ${isSoldOut ? "Sold Out" : "In Stock"}
+        </p>
       </div>
 
       <button class="buyButton" ${isSoldOut ? "disabled" : ""}>
-        ${isSoldOut ? "UDSOLGT" : "KØB NU"}
+        ${isSoldOut ? "SOLD OUT" : "BUY NOW"}
       </button>
     </section>
   `;
 }
-
-getData();

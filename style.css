@@ -104,7 +104,7 @@ h3 {
   color: black;
   padding: 10px 20px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 15px;
   height: 200px;
   display: flex;
   align-items: center;
@@ -183,7 +183,7 @@ h3 {
   background: transparent;
   color: black;
   padding: 0.5rem 2.4rem;
-  border-radius: 6px;
+  border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-family: "Zalando Sans SemiExpanded", sans-serif;
@@ -288,7 +288,7 @@ figure {
   background-color: rgb(46, 46, 46);
   color: white;
   padding: 12px 40px;
-  border-radius: 10px;
+  border-radius: 20px;
   width: fit-content;
   margin-top: 1.6rem;
   cursor: pointer;
